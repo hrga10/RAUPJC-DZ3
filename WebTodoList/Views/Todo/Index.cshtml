@@ -1,0 +1,44 @@
+﻿@model List<TodoRepository.TodoItem>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            TodoList
+        </title>
+    </head>
+
+    <body>
+        <div id="header">
+            <h1>
+                Active Todo items
+            </h1>
+            <h5>
+                <a asp-action="Add"> 
+                    Add new todo
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+                &nbsp; &nbsp;
+                <a asp-action="Completed">
+                    See completed todos
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </a>
+            </h5>
+        </div>
+
+        <div>
+            @foreach(var todo in Model)
+            {
+                <hr />
+                @todo.Text 
+                <br />
+                @todo.DateCreated
+                <br />
+                <a asp-action="MarkAsCompleted" asp-route-itemId="@todo.Id">
+                    Mark as completed
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </a>
+            }
+        </div>
+    </body>
+
+</html>
